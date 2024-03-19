@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+</head>
+<body>
+    <h1>Random Number Generator</h1>
+    <form action="/generate" method="post">
+        <label for="n">Enter the number of random numbers to generate:</label>
+        <input type="text" id="n" name="n">
+        <button type="submit">Generate</button>
+    </form>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    {% if random_numbers %}
+        <h2>Generated Numbers:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for num in random_numbers %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ num }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>
+
